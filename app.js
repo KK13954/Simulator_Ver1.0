@@ -7,7 +7,7 @@ import {
 } from './matching.js';
 
 const MAPS_API_KEY =
-  'AIzaSyD0eZEFoMe7LGmHlgbSDrPJz0JkFlI19_M';
+  'AIzaSyAHf84f7w_OrzWnPx0VWRtMlx3oQy5mADM';
 const AUTH_PASSWORD = 'visions';
 
 const CAR_A_INITIAL_PROGRESS = 0.35;
