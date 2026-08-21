@@ -8,10 +8,49 @@ import {
 
 const MAPS_API_KEY =
   'AIzaSyD0eZEFoMe7LGmHlgbSDrPJz0JkFlI19_M';
+const AUTH_PASSWORD = 'visions';
 
 const CAR_A_INITIAL_PROGRESS = 0.35;
 const STEP_MS = 500;
 const BASE_STEP_SEC = 5;
+
+const authElements = {
+  screen: document.getElementById('auth-screen'),
+  form: document.getElementById('auth-form'),
+  input: document.getElementById('password-input'),
+  error: document.getElementById('auth-error'),
+};
+
+function setAuthError(message) {
+  if (!authElements.error) {
+    return;
+  }
+
+  authElements.error.textContent = message;
+}
+
+function handleAuthSubmit(event) {
+  event.preventDefault();
+
+  const inputValue = authElements.input?.value.trim() ?? '';
+
+  if (!inputValue) {
+    setAuthError('パスワードを入力してください。');
+    authElements.input?.focus();
+    return;
+  }
+
+  if (inputValue !== AUTH_PASSWORD) {
+    setAuthError('パスワードが違います。');
+    authElements.input?.focus();
+    authElements.input?.select();
+    return;
+  }
+
+  document.body.classList.add('authenticated');
+  setAuthError('');
+  main();
+}
 
 const $ = id =>
   document.getElementById(id);
@@ -1900,4 +1939,4 @@ async function main() {
   }
 }
 
-main();
+authElements.form?.addEventListener('submit', handleAuthSubmit);

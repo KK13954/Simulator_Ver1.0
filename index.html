@@ -10,6 +10,25 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <div id="auth-screen" class="auth-screen" aria-live="polite">
+    <div class="auth-card">
+      <p class="auth-kicker">アクセス制御</p>
+      <h2>認証</h2>
+      <form id="auth-form" novalidate>
+        <label for="password-input">パスワード</label>
+        <input
+          id="password-input"
+          type="password"
+          placeholder="パスワードを入力"
+          autocomplete="off"
+          aria-label="パスワード"
+        >
+        <p id="auth-error" class="auth-error" role="alert" aria-live="assertive"></p>
+        <button type="submit">ログイン</button>
+      </form>
+    </div>
+  </div>
+
   <div id="app">
     <aside id="panel">
       <header class="app-header">
